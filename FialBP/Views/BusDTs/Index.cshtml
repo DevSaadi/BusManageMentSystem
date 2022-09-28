@@ -1,0 +1,99 @@
+﻿@model FialBP.ViewModel.VmCategoryWiseBus
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-s pull-s">
+        <h4>Bus Category</h4>
+        <p>
+            <a href="/BusDTs/Create" class="btn btn-sm btn-success">Create New</a>
+        </p>
+        <table>
+            <tr>
+                <th>
+                    Category
+                </th>
+                <th>
+                    Avaiable Bus
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model.CategoryList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CategoryName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                    <td>
+                        <a href="/BusDTs/Index?id=@item.CategoryId" class="btn btn-sm btn-primary">Details</a> |
+                        <a href="/BusDTs/EditMultiple?id=@item.CategoryId" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="/BusDTs/DeleteMultiple?id=@item.CategoryId" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure to delete this category with Bus?')">Delete</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="col-s7 push-s">
+        <h4>Bus of @Model.CategoryName</h4>
+        <p>
+            <a href="/BusDTs/Create" class="btn btn-sm btn-success">Create New</a>
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    Category
+                </th>
+                <th>
+                    Buses
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    BookingDate
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    ImagePath
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.BusList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CategoryName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BusDTName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookingDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                    <td>
+                        <img src="@item.ImagePath" style="height:150px" />
+                    </td>
+                    <td>
+                        <a href="/BusDTs/Edit?id=@item.BusDTId" class="btn btn-sm btn-warning">Edit</a> |
+                        <a href="/BusDTs/Delete?id=@item.BusDTId" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure to delete this Bus detail?')">Delete</a>
+                    </td>
+
+                </tr>
+            }
+        </table>
+    </div>
+</div>

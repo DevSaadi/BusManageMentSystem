@@ -1,0 +1,26 @@
+﻿@model FialBP.Models.BusType
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BusType</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BTName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BTName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BTypeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

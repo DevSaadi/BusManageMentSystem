@@ -1,0 +1,58 @@
+﻿@model FialBP.Models.Route
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Route</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Bus.BusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bus.BusName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RouteName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RouteName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartPoint)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartPoint)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndPoint)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndPoint)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitPrice)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RouteId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

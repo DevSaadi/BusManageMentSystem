@@ -1,0 +1,79 @@
+﻿@{
+    var oUser = (FialBP.Models.User)Session["Users"];
+    var listUserRole = (List<FialBP.Models.UserRole>)Session["UserRoles"];
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Saadi Project</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Saadi Project", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+
+                    @if (Session["Users"] != null && listUserRole.Where(o => o.PageName == "Buses" && o.IsRead == true).FirstOrDefault() != null)
+                    {
+                        <li>@Html.ActionLink("Bus", "Index", "Buses") </li>
+                        <li>@Html.ActionLink("Bus Multi Row Data", "Index", "BusDTs") </li>
+                    }
+                    @if (Session["Users"] != null && listUserRole.Where(o => o.PageName == "Routes" && o.IsRead == true).FirstOrDefault() != null)
+                    {
+                        <li>@Html.ActionLink("Routes", "Index", "Routes") </li>
+                    }
+                    @if (Session["Users"] != null && listUserRole.Where(o => o.PageName == "Schedules" && o.IsRead == true).FirstOrDefault() != null)
+                    {
+                        <li>@Html.ActionLink("Schedules", "Index", "Schedules") </li>
+                    }
+                    @if (Session["Users"] != null && listUserRole.Where(o => o.PageName == "Employee" && o.IsRead == true).FirstOrDefault() != null)
+                    {
+                        <li>@Html.ActionLink("Employee List", "Emp", "Employee")</li>
+                    }
+                    @if (Session["Users"] != null && oUser.UserType == FinalProject.Libs.Utilities.UserType.SuperAdmin.ToString())
+                    {
+                        <li>@Html.ActionLink("User", "Index", "Users")</li>
+                        <li>@Html.ActionLink("Employee List", "Emp", "Employee")</li>
+                    }
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (Session["Users"] != null)
+                    {
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Welcome, @oUser.Username</a></li>
+                        <li><a href="/Home/Logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="/Home/Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    }
+                   
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Saadi Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

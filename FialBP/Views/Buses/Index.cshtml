@@ -1,0 +1,57 @@
+﻿@model IEnumerable<FialBP.Models.Bus>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BusType1.BTName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BusName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOfSeat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LicenseNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FitnessStatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BusType1.BTName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BusName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoOfSeat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LicenseNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FitnessStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BusId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BusId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BusId })
+        </td>
+    </tr>
+}
+
+</table>

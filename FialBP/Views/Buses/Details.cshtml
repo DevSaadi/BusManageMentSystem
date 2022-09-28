@@ -1,0 +1,58 @@
+﻿@model FialBP.Models.Bus
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Bus</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BusType1.BTName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BusType1.BTName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BusName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoOfSeat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoOfSeat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LicenseNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LicenseNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FitnessStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FitnessStatus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BusId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

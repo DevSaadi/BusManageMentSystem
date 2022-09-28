@@ -1,0 +1,49 @@
+﻿@model FialBP.ViewModel.VmBus
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var ExpireDate = Model.BookingDate == null ? "" : Convert.ToDateTime(Model.BookingDate).ToString("yyyy-MM-dd");
+
+}
+
+<h2>Edit Bus</h2>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@using (Html.BeginForm("Edit", "BusDTs", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            Category
+            <select id="CategoryId" name="CategoryId" required>
+                @foreach (var item in Model.CategoryList)
+                {
+                    var Selected = item.CategoryId == Model.CategoryId ? "selected" : "";
+                    <option value="@item.CategoryId" @Selected>@item.CategoryName</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <div id="ProData" class="Table">
+                <div id="RowData" class="Row">
+                    <input type="hidden" name="BusDTId" value="@Model.BusDTId" />
+                    <input type="text" name="BusDTName" placeholder="BusName" value="@Model.BusDTName" />
+                    <input type="text" name="Quantity" placeholder="Quantity" value="@Model.Quantity" />
+                    <input type="text" name="Price" placeholder="Price" value="@Model.Price" />
+                    <input type="date" name="BookingDate" placeholder="BookingDate" value="@Model.BookingDate" />
+                    <input type="file" name="imgFile" placeholder="imgFile" />
+                    <img src="@Model.ImagePath" style="width:150px" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Edit" class="btn btn-default">
+            </div>
+        </div>
+    </div>
+}
